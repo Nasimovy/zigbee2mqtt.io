@@ -17,8 +17,8 @@ pageClass: device-page
 |-----|-----|
 | Model | TS0207_water_leak_detector_2  |
 | Vendor  | [TuYa](/supported-devices/#v=TuYa)  |
-| Description | Zigbee water leak sensor + alarm (40dB) |
-| Exposes | water_leak, battery_low, battery, linkquality |
+| Description | Zigbee water leak sensor |
+| Exposes | water_leak, tamper, battery_low, battery, linkquality |
 | Picture | ![TuYa TS0207_water_leak_detector_2](https://www.zigbee2mqtt.io/images/devices/TS0207_water_leak_detector_2.jpg) |
 
 
@@ -32,17 +32,23 @@ pageClass: device-page
 
 ## Exposes
 
-### Water_leak (binary)
+### Water leak (binary)
 Indicates whether the device detected a water leak.
 Value can be found in the published state on the `water_leak` property.
 It's not possible to read (`/get`) or write (`/set`) this value.
-If value equals `true` water_leak is ON, if `false` OFF.
+If value equals `true` water leak is ON, if `false` OFF.
 
-### Battery_low (binary)
+### Tamper (binary)
+Indicates whether the device is tampered.
+Value can be found in the published state on the `tamper` property.
+It's not possible to read (`/get`) or write (`/set`) this value.
+If value equals `true` tamper is ON, if `false` OFF.
+
+### Battery low (binary)
 Indicates if the battery of this device is almost empty.
 Value can be found in the published state on the `battery_low` property.
 It's not possible to read (`/get`) or write (`/set`) this value.
-If value equals `true` battery_low is ON, if `false` OFF.
+If value equals `true` battery low is ON, if `false` OFF.
 
 ### Battery (numeric)
 Remaining battery in %, can take up to 24 hours before reported..

@@ -40,7 +40,7 @@ sudo apt-get install -y nodejs git make g++ gcc
 
 # Verify that the correct nodejs and npm (automatically installed with nodejs)
 # version has been installed
-node --version  # Should output v14.X, V16.x, V17.x or V18.X
+node --version  # Should output V16.x, V17.x, V18.X or V20.X
 npm --version  # Should output 6.X, 7.X or 8.X
 
 # Create a directory for zigbee2mqtt and set your user as owner of it
@@ -53,6 +53,9 @@ git clone --depth 1 https://github.com/Koenkk/zigbee2mqtt.git /opt/zigbee2mqtt
 # Install dependencies (as user "pi")
 cd /opt/zigbee2mqtt
 npm ci
+
+# Build the app
+npm run build
 ```
 
 If everything went correctly the output of `npm ci` is similar to (the number of packages and seconds is probably different on your device):
@@ -81,10 +84,11 @@ node --version
 :::
 
 ## Configuring
-Before we can start Zigbee2MQTT we need to edit the `configuration.yaml` file. This file contains the configuration which will be used by Zigbee2MQTT.
+Before we can start Zigbee2MQTT we need to copy and edit the `configuration.yaml` file. This file contains the configuration which will be used by Zigbee2MQTT.
 
-Open the configuration file:
+Copy and open the configuration file:
 ```bash
+cp /opt/zigbee2mqtt/data/configuration.example.yaml /opt/zigbee2mqtt/data/configuration.yaml
 nano /opt/zigbee2mqtt/data/configuration.yaml
 ```
 
@@ -105,19 +109,6 @@ mqtt:
 serial:
   # Location of the adapter (see first step of this guide)
   port: /dev/ttyACM0
-```
-
-It is recommended to use a custom network key. This can be done by adding the following to your `configuration.yaml`. With this Zigbee2MQTT will generate a network key on next startup.
-
-```yaml
-advanced:
-    network_key: GENERATE
-```
-
-To enable the frontend add the following (see the [Frontend](../configuration/frontend.md) page for more settings):
-
-```yaml
-frontend: true
 ```
 
 Save the file and exit.
@@ -249,6 +240,7 @@ cp -R data data-backup
 # Update
 git pull
 npm ci
+npm run build
 
 # Restore configuration
 cp -R data-backup/* data

@@ -20,7 +20,7 @@ pageClass: device-page
 | Description | Smart plug (with power monitoring by polling) |
 | Exposes | switch (state), power_outage_memory, indicator_mode, power, current, voltage, energy, lock (state), linkquality |
 | Picture | ![TuYa TS011F_plug_3](https://www.zigbee2mqtt.io/images/devices/TS011F_plug_3.jpg) |
-| White-label | VIKEFON TS011F, BlitzWolf BW-SHP15, Avatto MIUCOT10Z, Neo NAS-WR01B, Neo PLUG-001SPB2 |
+| White-label | VIKEFON TS011F, BlitzWolf BW-SHP15, AVATTO MIUCOT10Z, Neo NAS-WR01B, Neo PLUG-001SPB2 |
 
 
 <!-- Notes BEGIN: You can edit here. Add "## Notes" headline if not already present. -->
@@ -87,14 +87,14 @@ The current state of this switch is in the published state under the `state` pro
 To control this switch publish a message to topic `zigbee2mqtt/FRIENDLY_NAME/set` with payload `{"state": "ON"}`, `{"state": "OFF"}` or `{"state": "TOGGLE"}`.
 To read the current state of this switch publish a message to topic `zigbee2mqtt/FRIENDLY_NAME/get` with payload `{"state": ""}`.
 
-### Power_outage_memory (enum)
+### Power outage memory (enum)
 Recover state after power outage.
 Value can be found in the published state on the `power_outage_memory` property.
 To read (`/get`) the value publish a message to topic `zigbee2mqtt/FRIENDLY_NAME/get` with payload `{"power_outage_memory": ""}`.
 To write (`/set`) a value publish a message to topic `zigbee2mqtt/FRIENDLY_NAME/set` with payload `{"power_outage_memory": NEW_VALUE}`.
 The possible values are: `on`, `off`, `restore`.
 
-### Indicator_mode (enum)
+### Indicator mode (enum)
 LED indicator mode.
 Value can be found in the published state on the `indicator_mode` property.
 To read (`/get`) the value publish a message to topic `zigbee2mqtt/FRIENDLY_NAME/get` with payload `{"indicator_mode": ""}`.
@@ -125,7 +125,7 @@ Value can be found in the published state on the `energy` property.
 It's not possible to read (`/get`) or write (`/set`) this value.
 The unit of this value is `kWh`.
 
-### Lock 
+### Child lock (lock)
 The current state of this lock is in the published state under the `child_lock` property (value is `LOCK` or `UNLOCK`).
 To control this lock publish a message to topic `zigbee2mqtt/FRIENDLY_NAME/set` with payload `{"child_lock": "LOCK"}` or `{"child_lock": "UNLOCK"}`.
 It's not possible to read (`/get`) this value.

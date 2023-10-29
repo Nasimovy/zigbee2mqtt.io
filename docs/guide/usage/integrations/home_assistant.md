@@ -118,7 +118,7 @@ devices:
         type: light
         object_id: light
       light:
-        name: my_switch
+        name: null
         value_template: null
         state_value_template: '{{ value_json.state }}'
       # OR if your devices has multiple endpoints (e.g. left/right)
@@ -138,7 +138,7 @@ devices:
         state_value_template: '{{ value_json.state_right }}'
 ```
 ### Changing device properties
-As an advanced example to show changing any MQTT property can be overriden, the following configuration changes the `suggested_area` property of the `device`. The example shows that you can just copy the given MQTT discovery hierarchy underneath the `homeassistant` property (given that `suggested_area` is underneath the `device` property). Please note, that other `device` properties are possibly set by Zigbee2MQTT (e.g. `manufacturer`).
+As an advanced example to show changing any MQTT property can be overridden, the following configuration changes the `suggested_area` property of the `device`. The example shows that you can just copy the given MQTT discovery hierarchy underneath the `homeassistant` property (given that `suggested_area` is underneath the `device` property). Please note, that other `device` properties are possibly set by Zigbee2MQTT (e.g. `manufacturer`).
 
 This example changes the [light's device's `suggested area` discovery property](https://www.home-assistant.io/integrations/light.mqtt/#device) to "Living Room":
 
@@ -195,12 +195,15 @@ input_text:
   zigbee2mqtt_old_name:
     name: Zigbee2MQTT Old Name
     initial: ""
+    icon: "mdi:moon-full"
   zigbee2mqtt_new_name:
     name: Zigbee2MQTT New Name
     initial: ""
+    icon: "mdi:moon-new"
   zigbee2mqtt_remove:
     name: Zigbee2MQTT Remove
     initial: ""
+    icon: "mdi:trash-can"
 
 # Input boolean to set the force remove flag for devices
 input_boolean:
@@ -213,6 +216,7 @@ input_boolean:
 script:
   zigbee2mqtt_rename:
     alias: Zigbee2MQTT Rename
+    icon: "mdi:pencil"
     sequence:
       service: mqtt.publish
       data_template:
@@ -224,6 +228,7 @@ script:
           }
   zigbee2mqtt_remove:
     alias: Zigbee2MQTT Remove
+    icon: "mdi:trash-can"
     sequence:
       service: mqtt.publish
       data_template:
@@ -297,6 +302,7 @@ mqtt:
   # Switch for enabling joining
   switch:
     - name: "Main join"
+      icon: "mdi:human-greeting-proximity"
       unique_id: zigbee2mqtt_main_join_switch
       state_topic: "zigbee2mqtt/bridge/info"
       value_template: '{{ value_json.permit_join | lower }}'

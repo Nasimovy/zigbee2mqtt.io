@@ -20,7 +20,6 @@ pageClass: device-page
 | Description | Din smart relay (with power monitoring via polling) |
 | Exposes | switch (state), power, current, voltage, energy, power_outage_memory, indicator_mode, linkquality |
 | Picture | ![TuYa TS011F_din_smart_relay_polling](https://www.zigbee2mqtt.io/images/devices/TS011F_din_smart_relay_polling.jpg) |
-| White-label | MatSee Plus ATMS1602Z, Tongou TO-Q-SY1-JZT |
 
 
 <!-- Notes BEGIN: You can edit here. Add "## Notes" headline if not already present. -->
@@ -88,14 +87,14 @@ Value can be found in the published state on the `energy` property.
 It's not possible to read (`/get`) or write (`/set`) this value.
 The unit of this value is `kWh`.
 
-### Power_outage_memory (enum)
+### Power outage memory (enum)
 Recover state after power outage.
 Value can be found in the published state on the `power_outage_memory` property.
 To read (`/get`) the value publish a message to topic `zigbee2mqtt/FRIENDLY_NAME/get` with payload `{"power_outage_memory": ""}`.
 To write (`/set`) a value publish a message to topic `zigbee2mqtt/FRIENDLY_NAME/set` with payload `{"power_outage_memory": NEW_VALUE}`.
 The possible values are: `on`, `off`, `restore`.
 
-### Indicator_mode (enum)
+### Indicator mode (enum)
 Relay LED indicator mode.
 Value can be found in the published state on the `indicator_mode` property.
 It's not possible to read (`/get`) this value.
